@@ -39,3 +39,6 @@ python -m pytest main.py -v
 ## Contributing
 
 Feel free to submit issues or pull requests for improvements.
+
+
+Requirements: C++, Github actions, Docker, Design correct testcase
