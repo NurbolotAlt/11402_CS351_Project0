@@ -1,46 +1,43 @@
-# Two Sum Problem Solver
+# Two Sum Problem Solver (C++20)
 
-This Python project implements two solutions to the classic Two Sum problem: finding two numbers in an array that add up to a target sum and returning their indices.
+This project provides two C++ implementations for the classic Two Sum problem and a small built-in test harness.
 
 ## Features
 
-- **Brute Force Approach**: [`twoSumArray`](main.py) - Uses nested loops with O(n²) time complexity.
-- **Optimized Approach**: [`twoSumHashTable`](main.py) - Uses a hash table for O(n) time complexity.
-- **Comprehensive Testing**: Includes a [`run_tests`](main.py) function with various test cases, including edge cases like duplicates, negatives, and empty arrays.
-- **CI/CD Pipeline**: Automated testing via GitHub Actions using pytest.
+- **Brute Force Approach**: `TwoSumArray` - nested loops, O(n²) time complexity.
+- **Optimized Approach**: `TwoSumsHashTable` - uses a hash table, O(n) time complexity.
+- **Built-in Tests**: Run the executable without stdin to execute sample testcases.
+- **CI**: GitHub Actions builds and runs the compiled binary.
 
-## Installation
+## Build / Installation
 
-1. Clone the repository.
-2. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
+Requirements: a C++20-capable compiler (g++ >= 10 or MSVC with C++20).
+
+Build locally (Linux/macOS):
+```sh
+g++ -std=c++20 -O2 -o main source/main.cpp
+```
+
+On Windows with MSVC, use the Visual Studio Developer Command Prompt and compile with `/std:c++20`.
 
 ## Usage
 
-Run the tests directly:
+Run built-in tests (no stdin):
 ```sh
-python main.py
+./main
 ```
 
-Or use pytest for more detailed output:
+Run with stdin input (first line `n`, second line `n` integers, third line `target`):
 ```sh
-python -m pytest main.py -v
+printf "4\n2 7 11 15\n9\n" | ./main
 ```
 
 ## Project Structure
 
-- [`main.py`](main.py): Contains the Two Sum implementations and test runner.
-- [`requirements.txt`](requirements.txt): Lists project dependencies (pytest).
-- [`.github/workflows/ci.yml`](.github/workflows/ci.yml): GitHub Actions workflow for continuous integration.
-- [`tests/`](tests/): Directory for additional test files (currently empty).
+- `source/main.cpp`: C++ implementation and test runner.
+- `source/requirements.txt`: Build/tooling notes for C++.
+- `.github/workflows/ci.yml`: CI workflow updated to build and run the C++ binary.
 
 ## Contributing
 
 Feel free to submit issues or pull requests for improvements.
-
-
-Requirements: C++, Github actions, Docker, Design correct testcase 
-
-This is branched edit.

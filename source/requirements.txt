@@ -1,1 +1,15 @@
-pytest==7.4.0
+# Project now uses C++20. This file lists build/runtime requirements.
+
+# Minimum C++ toolchain
+g++: "GNU C++ compiler (g++) - version >= 10 recommended"
+# Alternatively, Microsoft Visual C++ with C++20 support on Windows.
+
+# Optional build tools
+cmake: "optional, for larger projects or cross-platform builds"
+
+# To build locally (Linux/macOS):
+#   g++ -std=c++20 -O2 -o main source/main.cpp
+# To run built-in tests (no stdin):
+#   ./main
+# To run with input from stdin:
+#   printf "4\n2 7 11 15\n9\n" | ./main
