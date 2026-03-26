@@ -43,7 +43,7 @@ vector<int> TwoSumHashTable(const vector<int>& nums, int target) {
     return {};
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
@@ -60,7 +60,8 @@ int main() {
     };
 
     // If stdin is a terminal (no pipe) then run built-in tests for convenience.
-    bool stdin_is_tty = ISATTY(FILENO(stdin));
+    //bool stdin_is_tty = ISATTY(FILENO(stdin));
+    bool stdin_is_tty = (argc == 1);
     if (stdin_is_tty) {
         // Built-in test cases
         struct Test { vector<int> nums; int target; bool expect; };
