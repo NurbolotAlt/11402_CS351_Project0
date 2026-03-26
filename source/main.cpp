@@ -1,7 +1,7 @@
 // C++20 implementation for Two Sum problem
 // Provides two implementations:
 // - TwoSumArray: brute-force O(n^2)
-// - TwoSumsHashTable: hash-table O(n)
+// - TwoSumHashTable: hash-table O(n)
 
 #include <iostream>
 #include <vector>
@@ -32,7 +32,7 @@ vector<int> TwoSumArray(const vector<int>& nums, int target) {
     return {};
 }
 
-vector<int> TwoSumsHashTable(const vector<int>& nums, int target) {
+vector<int> TwoSumHashTable(const vector<int>& nums, int target) {
     unordered_map<int, int> m;
     for (int i = 0; i < static_cast<int>(nums.size()); ++i) {
         int complement = target - nums[i];
@@ -77,7 +77,7 @@ int main() {
         for (size_t i = 0; i < tests.size(); ++i) {
             const auto& t = tests[i];
             auto r1 = TwoSumArray(t.nums, t.target);
-            auto r2 = TwoSumsHashTable(t.nums, t.target);
+            auto r2 = TwoSumHashTable(t.nums, t.target);
             bool ok1 = valid_pair(t.nums, r1, t.target);
             bool ok2 = valid_pair(t.nums, r2, t.target);
             cout << "Test " << (i+1) << ": ";
@@ -86,7 +86,7 @@ int main() {
             cout << "] target=" << t.target << " -> ";
             cout << "TwoSumArray(" << (ok1?"OK":"FAIL") << ") ";
             if (ok1) cout << "indices=" << r1[0] << "," << r1[1] << " ";
-            cout << "TwoSumsHashTable(" << (ok2?"OK":"FAIL") << ") ";
+            cout << "TwoSumHashTable(" << (ok2?"OK":"FAIL") << ") ";
             if (ok2) cout << "indices=" << r2[0] << "," << r2[1] << " ";
             cout << "\n";
         }
@@ -110,13 +110,13 @@ int main() {
     int target; cin >> target;
 
     auto res1 = TwoSumArray(nums, target);
-    auto res2 = TwoSumsHashTable(nums, target);
+    auto res2 = TwoSumHashTable(nums, target);
 
     if (!res1.empty()) cout << "TwoSumArray: " << res1[0] << ' ' << res1[1] << '\n';
     else cout << "TwoSumArray: not found\n";
 
-    if (!res2.empty()) cout << "TwoSumsHashTable: " << res2[0] << ' ' << res2[1] << '\n';
-    else cout << "TwoSumsHashTable: not found\n";
+    if (!res2.empty()) cout << "TwoSumHashTable: " << res2[0] << ' ' << res2[1] << '\n';
+    else cout << "TwoSumHashTable: not found\n";
 
     return 0;
 }
