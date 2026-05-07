@@ -60,8 +60,8 @@ int main(int argc, char* argv[]) {
     };
 
     // If stdin is a terminal (no pipe) then run built-in tests for convenience.
-    //bool stdin_is_tty = ISATTY(FILENO(stdin));
-    bool stdin_is_tty = (argc == 1);
+    bool stdin_is_tty = ISATTY(FILENO(stdin));
+    //bool stdin_is_tty = (argc == 1);
     if (stdin_is_tty) {
         // Built-in test cases
         struct Test { vector<int> nums; int target; bool expect; };
