@@ -22,7 +22,7 @@ jobs:
       run: g++ -std=c++20 -O2 -o main source/main.cpp
 
     - name: Run built-in tests (small test cases)
-      run: ./main
+      run: ./main --test
 
     - name: Run medium test case (25,000 elements, target=12500)
       run: |
