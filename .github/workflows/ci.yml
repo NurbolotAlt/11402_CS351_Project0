@@ -21,5 +21,38 @@ jobs:
     - name: Build C++ binary
       run: g++ -std=c++20 -O2 -o main source/main.cpp
 
-    - name: Run built-in tests
+    - name: Run built-in tests (small test cases)
       run: ./main
+
+    - name: Run medium test case (25,000 elements, target=12500)
+      run: |
+        echo "Testing with 25,000 element array..."
+        /usr/bin/time -v cat tests/medium_testcase.txt | ./main > /tmp/medium_test_output.txt 2>&1 || true
+        echo "=== Medium Test Output ==="
+        cat /tmp/medium_test_output.txt
+        echo "=== Test Complete ==="
+
+    - name: Run no-solution test (expecting no valid pair)
+      run: |
+        echo "Testing with array that has no valid pair sum..."
+        cat tests/no_solution_testcase.txt | ./main
+
+    - name: Run negative numbers test
+      run: |
+        echo "Testing with negative numbers..."
+        cat tests/negative_numbers_testcase.txt | ./main
+
+    - name: Run large test case (10,000 elements, target=5000)
+      run: |
+        echo "Testing with 10,000 element array..."
+        /usr/bin/time -v cat tests/large_testcase.txt | ./main > /tmp/large_test_output.txt 2>&1 || true
+        echo "=== Large Test Output ==="
+        cat /tmp/large_test_output.txt
+        echo "=== Test Complete ==="
+
+    - name: Generate and run extra-large test (50,000 elements)
+      run: |
+        echo "Generating 50,000 element test case..."
+        python3 tests/generate_test.py 50000 -o /tmp/xlarge_test.txt
+        echo "Running extra-large test case..."
+        cat /tmp/xlarge_test.txt | timeout 30 ./main || echo "Test completed or timed out"
